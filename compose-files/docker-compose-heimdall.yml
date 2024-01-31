@@ -1,0 +1,21 @@
+version: '3'
+services:
+  heimdall:
+    image: lscr.io/linuxserver/heimdall:latest
+    container_name: heimdall
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Budapest
+    volumes:
+      - /home/homelab/docker/heimdall/config:/config
+    ports:
+      - 8880:80
+      - 8843:443
+    restart: unless-stopped
+    networks: 
+      - nginx
+
+networks:
+  nginx:
+    external: true

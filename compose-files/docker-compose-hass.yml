@@ -1,0 +1,42 @@
+version: '3'
+services:
+  homeassistant:
+    container_name: homeassistant
+    image: "ghcr.io/home-assistant/home-assistant:stable"
+    volumes:
+      - /home/homelab/docker/homeassistant/config:/config
+      - /etc/localtime:/etc/localtime:ro
+      - /run/dbus:/run/dbus:ro
+    environment:
+      - TZ=Europe/Budapest
+    restart: unless-stopped
+    privileged: true
+    network_mode: host
+  zigbee2mqtt:
+    container_name: zigbee2mqtt
+    image: koenkk/zigbee2mqtt
+    restart: unless-stopped
+    group_add:
+      - dialout
+    user: 1000:1000
+    volumes:
+      - /home/homelab/docker/zigbee2mqtt/data:/app/data
+      - /run/udev:/run/udev:ro
+    ports:
+      # Frontend port
+      - 8181:8080
+    environment:
+      - TZ=Europe/Budapest
+    devices:
+      - /dev/serial/by-id/usb-Texas_Instruments_TI_CC2531_USB_CDC___0X00124B0018ED3DDF-if00:/dev/ttyACM0
+  mqtt5:
+    image: eclipse-mosquitto
+    container_name: mqtt5
+    ports:
+      - "1883:1883" #default mqtt port
+      - "9001:9001" #default mqtt port for websockets
+    volumes:
+      - /home/homelab/docker/mosquitto/config:/mosquitto/config:rw
+      - /home/homelab/docker/mosquitto/data:/mosquitto/data:rw
+      - /home/homelab/docker/mosquitto/log:/mosquitto/log:rw
+    restart: unless-stopped
