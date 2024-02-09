@@ -18,7 +18,7 @@ services:
     restart: unless-stopped
     group_add:
       - dialout
-    user: 1000:1000
+    user: 1001:1001
     volumes:
       - /home/homelab/docker/zigbee2mqtt/data:/app/data
       - /run/udev:/run/udev:ro
