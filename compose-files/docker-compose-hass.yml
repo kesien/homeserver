@@ -40,3 +40,15 @@ services:
       - /home/homelab/docker/mosquitto/data:/mosquitto/data:rw
       - /home/homelab/docker/mosquitto/log:/mosquitto/log:rw
     restart: unless-stopped
+  esphome:
+    container_name: esphome
+    image: ghcr.io/esphome/esphome
+    volumes:
+      - /home/homelab/docker/esphome/config:/config
+      - /etc/localtime:/etc/localtime:ro
+    restart: always
+    privileged: true
+    network_mode: host
+    environment:
+      - USERNAME=kesien
+      - PASSWORD=${ESP_PASSWORD}
