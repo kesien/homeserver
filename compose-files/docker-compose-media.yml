@@ -58,8 +58,8 @@ services:
       - TZ=Europe/Budapest
     volumes:
       - /home/homelab/docker/bazarr/config:/config
-      - /mnt/media/movies:/movies #optional
-      - /mnt/media/series:/tv #optional
+      - /mnt/media/Movies:/movies #optional
+      - /mnt/media/Series:/tv #optional
     ports:
       - 6767:6767
     restart: unless-stopped
