@@ -34,19 +34,17 @@ services:
     networks:
       - media
       - nginx
-  jackett:
-    container_name: jackett
-    image: lscr.io/linuxserver/jackett:latest
-    ports:
-      - "9117:9117"
+  prowlarr:
+    image: lscr.io/linuxserver/prowlarr:latest
+    container_name: prowlarr
     environment:
       - PUID=1000
       - PGID=1000
-      - UMASK=002
-      - AUTO_UPDATE=true #optional
-      - TZ=Europe/Budapest
+      - TZ=Etc/UTC
     volumes:
-      - /home/homelab/docker/media/jackett/config:/config
+      - /home/homelab/docker/media/prowlarr/config:/config
+    ports:
+      - 9696:9696
     restart: unless-stopped
     networks:
       - media
