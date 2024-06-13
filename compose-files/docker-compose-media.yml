@@ -12,7 +12,7 @@ services:
       - TZ=Europe/Budapest
     volumes:
       - /home/homelab/docker/media/radarr/config:/config
-      - /mnt/storage:/data
+      - /mnt/media:/data
     restart: unless-stopped
     networks:
       - media
@@ -29,24 +29,7 @@ services:
       - TZ=Europe/Budapest
     volumes:
       - /home/homelab/docker/media/sonarr/config:/config
-      - /mnt/storage:/data
-    restart: unless-stopped
-    networks:
-      - media
-      - nginx
-  jellyfin:
-    container_name: jellyfin
-    image: ghcr.io/hotio/jellyfin
-    ports:
-      - "8096:8096"
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - UMASK=002
-      - TZ=Europe/Budapest
-    volumes:
-      - /home/homelab/docker/media/jellyfin/config:/config
-      - /mnt/storage:/data
+      - /mnt/media:/data
     restart: unless-stopped
     networks:
       - media
@@ -67,21 +50,19 @@ services:
     networks:
       - media
       - nginx
-  qbittorrent:
-    image: lscr.io/linuxserver/qbittorrent:latest
-    container_name: qbittorrent
+  bazarr:
+    image: lscr.io/linuxserver/bazarr:latest
+    container_name: bazarr
     environment:
       - PUID=1000
       - PGID=1000
       - TZ=Europe/Budapest
-      - WEBUI_PORT=8060
     volumes:
-      - /home/homelab/docker/media/qbitorrent/config:/config
-      - /mnt/storage:/downloads
+      - /home/homelab/docker/bazarr/config:/config
+      - /mnt/media/movies:/movies #optional
+      - /mnt/media/series:/tv #optional
     ports:
-      - "8060:8060"
-      - "6881:6881"
-      - "6881:6881/udp"
+      - 6767:6767
     restart: unless-stopped
     networks:
       - media
