@@ -6,8 +6,8 @@ services:
     ports:
       - "7878:7878"
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=0
+      - PGID=0
       - UMASK=002
       - TZ=Europe/Budapest
     volumes:
@@ -23,8 +23,8 @@ services:
     ports:
       - "8989:8989"
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=0
+      - PGID=0
       - UMASK=002
       - TZ=Europe/Budapest
     volumes:
@@ -39,8 +39,8 @@ services:
     image: lscr.io/linuxserver/prowlarr:latest
     container_name: prowlarr
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=0
+      - PGID=0
       - TZ=Etc/UTC
     volumes:
       - /home/homelab/docker/media/prowlarr/config:/config
@@ -54,8 +54,8 @@ services:
     image: lscr.io/linuxserver/bazarr:latest
     container_name: bazarr
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=0
+      - PGID=0
       - TZ=Europe/Budapest
     volumes:
       - /home/homelab/docker/bazarr/config:/config
