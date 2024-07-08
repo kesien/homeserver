@@ -16,3 +16,12 @@ services:
       - 6881:6881
       - 6881:6881/udp
     restart: unless-stopped
+    networks:
+      - media
+      - nginx
+
+networks:
+  media:
+    external: true
+  nginx:
+    external: true
