@@ -5,6 +5,7 @@ services:
     restart: always
     ports:
       - "8888:80"
+    user: "${UID}:${GID}"
     environment:
       PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL}
       PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD}
