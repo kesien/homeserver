@@ -13,6 +13,7 @@ services:
     volumes:
       - /home/homelab/docker/media/radarr/config:/config
       - /mnt/media:/data
+      - /mnt/Downloads:/downloads
     restart: unless-stopped
     networks:
       - media
