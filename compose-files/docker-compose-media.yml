@@ -1,4 +1,3 @@
-version: '3'
 services:
   radarr:
     container_name: radarr
@@ -68,6 +67,20 @@ services:
     networks:
       - media
       - nginx
+  jellyfin:
+    image: lscr.io/linuxserver/jellyfin:latest
+    container_name: jellyfin
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=Europe/Budapest
+    volumes:
+      - /home/homelab/media/jellyfin:/config
+      - /mnt/media/Movies:/data/Movies
+      - /mnt/media/Series:/data/Series
+    ports:
+      - 8096:8096
+    restart: unless-stopped
 
 networks:
   media:
