@@ -11,8 +11,7 @@ services:
       - TZ=Europe/Budapest
     volumes:
       - /home/homelab/docker/media/radarr/config:/config
-      - /mnt/hdd/media:/data
-      - /mnt/hdd/downloads:/downloads
+      - /mnt/hdd/data:/data
     restart: unless-stopped
     networks:
       - media
@@ -29,8 +28,7 @@ services:
       - TZ=Europe/Budapest
     volumes:
       - /home/homelab/docker/media/sonarr/config:/config
-      - /mnt/hdd/media:/data
-      - /mnt/hdd/downloads:/downloads
+      - /mnt/hdd/data:/data
     restart: unless-stopped
     networks:
       - media
@@ -59,8 +57,7 @@ services:
       - TZ=Europe/Budapest
     volumes:
       - /home/homelab/docker/bazarr/config:/config
-      - /mnt/hdd/media/movies:/movies #optional
-      - /mnt/hdd/media/series:/tv #optional
+      - /mnt/hdd/data:/data #optional
     ports:
       - 6767:6767
     restart: unless-stopped
@@ -76,9 +73,7 @@ services:
       - TZ=Europe/Budapest
     volumes:
       - /home/homelab/media/jellyfin:/config
-      - /mnt/hdd/media/movies:/data/Movies
-      - /mnt/hdd/media/series:/data/Series
-      - /mnt/hdd/media/kids:/data/Kids
+      - /mnt/hdd/data/media:/data/media
     ports:
       - 8096:8096
     restart: unless-stopped
