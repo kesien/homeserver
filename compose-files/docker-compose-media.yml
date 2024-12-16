@@ -78,6 +78,7 @@ services:
       - /home/homelab/media/jellyfin:/config
       - /mnt/hdd/media/movies:/data/Movies
       - /mnt/hdd/media/series:/data/Series
+      - /mnt/hdd/media/kids:/data/Kids
     ports:
       - 8096:8096
     restart: unless-stopped
