@@ -10,7 +10,7 @@ services:
       - TORRENTING_PORT=6881
     volumes:
       - /home/homelab/docker/qbitorrent/config:/config
-      - /mnt/data/torrents:/data/torrents
+      - /mnt/hdd/data/torrents:/data/torrents
     ports:
       - 8080:8080
       - 6881:6881
