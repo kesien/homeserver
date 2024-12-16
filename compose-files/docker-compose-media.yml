@@ -71,6 +71,8 @@ services:
       - PUID=0
       - PGID=0
       - TZ=Europe/Budapest
+    devices:
+      - /dev/dri/renderD128 # for intel hwaccel, needs to be updated for your hardware
     volumes:
       - /home/homelab/media/jellyfin:/config
       - /mnt/hdd/data/media:/data/media
