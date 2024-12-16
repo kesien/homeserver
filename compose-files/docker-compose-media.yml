@@ -76,7 +76,7 @@ services:
       - TZ=Europe/Budapest
     volumes:
       - /home/homelab/media/jellyfin:/config
-      - /mnt/hdd/media/sovies:/data/Movies
+      - /mnt/hdd/media/movies:/data/Movies
       - /mnt/hdd/media/series:/data/Series
     ports:
       - 8096:8096
