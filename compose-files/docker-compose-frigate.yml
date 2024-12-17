@@ -1,0 +1,25 @@
+services:
+  frigate:
+    container_name: frigate
+    privileged: true
+    restart: unless-stopped
+    image: ghcr.io/blakeblackshear/frigate:stable
+    shm_size: "128mb"
+    devices:
+      - /dev/dri/renderD128
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /home/homelab/docker/frigate/config:/config
+      - /mnt/hdd/cctv:/media/frigate
+      - type: tmpfs
+        target: /tmp/cache
+        tmpfs:
+          size: 1000000000
+    ports:
+      - "5000:5000"
+      - "1935:1935"
+      - "1984:1984"
+      - "8555:8555/tcp"
+      - "8555:8555/udp"
+    environment:
+      FRIGATE_RTSP_PASSWORD: ${RTSP_PASSWORD}

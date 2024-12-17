@@ -16,6 +16,7 @@ services:
     networks:
       - media
       - nginx
+
   sonarr:
     container_name: sonarr
     image: ghcr.io/hotio/sonarr
@@ -33,6 +34,7 @@ services:
     networks:
       - media
       - nginx
+
   prowlarr:
     image: lscr.io/linuxserver/prowlarr:latest
     container_name: prowlarr
@@ -48,6 +50,7 @@ services:
     networks:
       - media
       - nginx
+
   bazarr:
     image: lscr.io/linuxserver/bazarr:latest
     container_name: bazarr
@@ -64,6 +67,7 @@ services:
     networks:
       - media
       - nginx
+
   jellyfin:
     image: lscr.io/linuxserver/jellyfin:latest
     container_name: jellyfin
@@ -79,6 +83,30 @@ services:
     ports:
       - 8096:8096
     restart: unless-stopped
+    networks:
+      - media
+      - nginx
+      
+  qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent:latest
+    container_name: qbittorrent
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=Europe/Budapest
+      - WEBUI_PORT=8080
+      - TORRENTING_PORT=6881
+    volumes:
+      - /home/homelab/docker/qbitorrent/config:/config
+      - /mnt/hdd/data/torrents:/data/torrents
+    ports:
+      - 8080:8080
+      - 6881:6881
+      - 6881:6881/udp
+    restart: unless-stopped
+    networks:
+      - media
+      - nginx
 
 networks:
   media:
