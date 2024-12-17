@@ -86,7 +86,7 @@ services:
     networks:
       - media
       - nginx
-      
+
   qbittorrent:
     image: lscr.io/linuxserver/qbittorrent:latest
     container_name: qbittorrent
@@ -107,6 +107,17 @@ services:
     networks:
       - media
       - nginx
+  
+  jellyseer:
+    image: fallenbagel/jellyseerr:latest
+    container_name: jellyseerr
+    environment:
+        - TZ=Europe/Budapest
+    ports:
+        - 5055:5055
+    volumes:
+        - /home/homelab/docker/jellyseer/config:/app/config
+    restart: unless-stopped
 
 networks:
   media:
