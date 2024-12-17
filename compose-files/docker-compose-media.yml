@@ -118,6 +118,9 @@ services:
     volumes:
         - /home/homelab/docker/jellyseer/config:/app/config
     restart: unless-stopped
+    networks:
+      - media
+      - nginx
 
 networks:
   media:
