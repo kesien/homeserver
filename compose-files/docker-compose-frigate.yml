@@ -5,6 +5,8 @@ services:
     restart: unless-stopped
     image: ghcr.io/blakeblackshear/frigate:stable
     shm_size: "128mb"
+    cap_add:
+      - CAP_PERFMON
     devices:
       - /dev/dri/renderD128
     volumes:
