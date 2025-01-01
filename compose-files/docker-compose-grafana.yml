@@ -3,6 +3,7 @@ services:
     image: grafana/grafana
     container_name: grafana_container
     restart: always
+    user: "0"
     ports:
       - 3000:3000
     networks:
