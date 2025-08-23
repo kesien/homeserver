@@ -9,10 +9,10 @@ services:
       - '81:81'
     networks:
       - nginx
+      - default  # Ez fontos! Hozzáférés a host hálózathoz
     volumes:
       - /home/homelab/docker/nginx/data:/data
       - /home/homelab/docker/nginx/letsencrypt:/etc/letsencrypt
-
-networks:
-  nginx:
-    name: nginx
+    # VAGY használd ezt a host network hozzáféréshez:
+    extra_hosts:
+      - "frigate.homeserver:192.168.7.103"
