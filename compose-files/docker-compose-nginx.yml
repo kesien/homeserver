@@ -16,3 +16,7 @@ services:
     # VAGY használd ezt a host network hozzáféréshez:
     extra_hosts:
       - "frigate.homeserver:192.168.7.103"
+
+networks:
+  nginx:
+    name: nginx
