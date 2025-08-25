@@ -23,5 +23,12 @@ services:
       - "1984:1984"
       - "8555:8555/tcp"
       - "8555:8555/udp"
+      - "8554:8554"
     environment:
       LIBVA_DRIVER_NAME: i965
+    networks:
+      - nginx
+
+networks:
+  nginx:
+    external: true
