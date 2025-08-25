@@ -3,7 +3,7 @@ services:
     container_name: frigate
     privileged: true
     restart: unless-stopped
-    image: ghcr.io/blakeblackshear/frigate:stable
+    image: ghcr.io/blakeblackshear/frigate:0.16.0
     shm_size: "128mb"
     cap_add:
       - CAP_PERFMON
