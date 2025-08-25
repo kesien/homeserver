@@ -24,5 +24,4 @@ services:
       - "8555:8555/tcp"
       - "8555:8555/udp"
     environment:
-      FRIGATE_RTSP_PASSWORD: ${RTSP_PASSWORD}
       LIBVA_DRIVER_NAME: i965
