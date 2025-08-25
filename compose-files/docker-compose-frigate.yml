@@ -23,6 +23,7 @@ services:
       - "1984:1984"
       - "8555:8555"
       - "8554:8554"
+      - "8971:8971"
     environment:
       LIBVA_DRIVER_NAME: i965
     networks:
