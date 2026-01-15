@@ -8,7 +8,7 @@ services:
     cap_add:
       - CAP_PERFMON
     devices:
-      - /dev/dri/renderD128
+      - /dev/apex_0:/dev/apex_0
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /home/homelab/docker/frigate/config:/config
