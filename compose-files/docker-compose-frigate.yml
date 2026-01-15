@@ -3,7 +3,7 @@ services:
     container_name: frigate
     privileged: true
     restart: unless-stopped
-    image: ghcr.io/blakeblackshear/frigate:stable
+    image: ghcr.io/blakeblackshear/frigate:0.16.0
     shm_size: "128mb"
     cap_add:
       - CAP_PERFMON
@@ -21,8 +21,14 @@ services:
       - "5000:5000"
       - "1935:1935"
       - "1984:1984"
-      - "8555:8555/tcp"
-      - "8555:8555/udp"
+      - "8555:8555"
+      - "8554:8554"
+      - "8971:8971"
     environment:
-      FRIGATE_RTSP_PASSWORD: ${RTSP_PASSWORD}
       LIBVA_DRIVER_NAME: i965
+    networks:
+      - nginx
+
+networks:
+  nginx:
+    external: true
