@@ -9,7 +9,7 @@ services:
       - CAP_PERFMON
     devices:
       - /dev/apex_0:/dev/apex_0
-      - /dev/dri/renderD128/dev/dri/renderD128
+      - /dev/dri/renderD128
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /home/homelab/docker/frigate/config:/config
