@@ -22,6 +22,7 @@ services:
 
   kimai:
     image: kimai/kimai2:apache
+    container_name: kimai
     volumes:
       - /home/homelab/docker/kimai/data:/opt/kimai/var/data
       - /home/homelab/docker/kimai/plugins:/opt/kimai/var/plugins
